@@ -15,6 +15,11 @@
 @layer base {
   :root {
     /* Add design tokens here. */
+    --color-primary: #0070f3;
+    --color-secondary: #1c1c1c;
+    --color-background: #ffffff;
+    --color-text: #000000;
+
   }
 
   body {
@@ -30,10 +35,34 @@
 
 @layer layout {
   /* Add page-level layout and composition classes here. */
+  .container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+  }
 }
 
 @layer components {
   /* Add reusable components such as buttons, cards, callouts, and forms here. */
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .button:hover {
+    background-color: darken(var(--color-primary), 10%);
+  }
 }
 
 @layer utilities {
@@ -46,12 +75,44 @@
     white-space: nowrap;
     clip-path: inset(50%);
   }
+  .margin-top {
+    margin-top: 20px;
+  }
+  .margin-bottom {
+    margin-bottom: 20px;
+  }
+  .margin-left {
+    margin-left: 20px;
+  }
+  .margin-right {
+    margin-right: 20px;
+  }
 }
 
 @layer overrides {
   /* Keep this layer small. Use it only for intentional exceptions. */
+  .card {
+    background-color: var(--color-background);
+    border: 1px solid var(--color-secondary);
+    border-radius: 4px;
+    padding: 20px;
+  }
+  .button:hover {
+    background-color: var(--color-secondary);
+  }
+  .button:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+  }
 }
 
 @media print {
   /* Add print improvements here. */
+  body {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  .button {
+    display: none;
+  }
 }
